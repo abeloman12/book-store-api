@@ -14,7 +14,11 @@ export class BookRepo {
   }
 
   async getAll(): Promise<Book[]> {
-    return this.bookModel.find().exec();
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(this.bookModel.find().exec());
+      }, 7000);
+    })
   }
 
   async getById(bookId: string): Promise<Book> {
